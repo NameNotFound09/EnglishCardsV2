@@ -1,5 +1,5 @@
 #!/bin/bash
-cd englishcards # Your app working directory!!!
+cd englishcardsv2 # Your app working directory!!!
 export PORT=5000
 unset PIP_USER
 

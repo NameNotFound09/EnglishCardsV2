@@ -471,7 +471,7 @@ def _alice_skill_handler():
         response_text = "Ты уверен? Скажи 'да, точно очистить' для подтверждения."
 
     # Очистка — шаг 2: подтверждение
-    elif command == 'да, точно очистить':
+    elif command in ('да, точно очистить', 'да точно очистить'):
         if user_data.get('confirm_clear'):
             user_data['words'] = {}
             user_data['confirm_clear'] = False
