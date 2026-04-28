@@ -8,7 +8,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from forms import LoginForm, RegisterForm
 import os
 import logging
-# import PIL
+from PIL import Image
 from datetime import datetime, timedelta
 from werkzeug.utils import secure_filename
 import random
@@ -511,7 +511,7 @@ def delete_avatar():
     db_sess = create_session()
     user = db_sess.get(User, current_user.id)
     if user.avatar_path:
-        file_path = os.path.join(BASE_DIR, 'static', user.avatar_path)
+        file_path = os.path.join(basedir, 'static', user.avatar_path)
         if os.path.exists(file_path):
             os.remove(file_path)
         user.avatar_path = None
