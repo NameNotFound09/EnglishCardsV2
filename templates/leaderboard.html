@@ -15,13 +15,12 @@
             justify-content: center;
             color: #fff;
             margin: 0;
-        }
         .leader-card {
-            width: 100%;
-            max-width: 500px;
-            border-radius: 15px;
-            background-color: #1e1e1e;
-            border: 1px solid #333;
+        width: 100%;
+        max-width: 4200px;
+        border-radius: 15px;
+        background-color: #1e1e1e;
+        border: 1px solid #333;
         }
         .user-row {
             background-color: #2b2b2b;
@@ -39,57 +38,48 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid py-4">
     <div class="row justify-content-center">
-        <div class="col-12 d-flex justify-content-center">
+        <div class="col-12 col-xl-10">
 
-            <div class="card leader-card shadow-lg">
+            <div class="card leader-card shadow-lg mx-auto">
                 <div class="card-body p-4">
-    <!-- Заголовок и Кнопка Назад -->
+                    <!-- Заголовок -->
                     <div class="text-center mb-4">
-                        <h2 class="mb-3"><i class="bi bi-trophy-fill text-warning me-2"></i>Рейтинг</h2>
+                        <h2 class="mb-3"><i class="bi bi-trophy-fill text-warning me-2"></i>Рейтинг лидеров</h2>
                         <a href="/main" class="btn btn-outline-secondary btn-sm px-4">
                             <i class="bi bi-arrow-left me-1"></i> Назад в меню
                         </a>
                     </div>
 
-    <!-- ШАПКА ТАБЛИЦЫ (Заголовки в одну строку) -->
+                    <!-- ШАПКА ТАБЛИЦЫ -->
                     <div class="row g-0 px-3 mb-2 text-muted small fw-bold text-uppercase text-center">
-                        <div class="col-2">#</div>
-                        <div class="col-6 text-start ps-3">Пользователь</div>
-                        <div class="col-4">Результат</div>
+                        <div class="col-1">#</div>
+                        <div class="col-8 text-start ps-3">Пользователь</div>
+                        <div class="col-3">Результат</div>
                     </div>
 
-    <!-- СПИСОК (Данные в таких же колонках) -->
+                    <!-- СПИСОК -->
                     <div class="leader-list">
                         {% for user in users %}
-                        <div class="user-row row g-0 align-items-center text-center shadow-sm mb-2"
-                             style="background: #2b2b2b; border-radius: 10px; padding: 10px 0; border: 1px solid #444;">
-
-            <!-- Место -->
-                            <div class="col-2 fw-bold">
+                        <div class="user-row row g-0 align-items-center text-center shadow-sm mb-2">
+                            <div class="col-1 fw-bold">
                                 {% if loop.index == 1 %}<i class="bi bi-star-fill gold"></i>
                                 {% elif loop.index == 2 %}<i class="bi bi-star-fill silver"></i>
                                 {% elif loop.index == 3 %}<i class="bi bi-star-fill bronze"></i>
                                 {% else %}{{ loop.index }}{% endif %}
                             </div>
 
-            <!-- Имя (выровнено по левому краю для красоты) -->
-                            <div class="col-6 text-start ps-3 text-truncate">
+                            <div class="col-8 text-start ps-3 text-truncate fs-5">
                                 {{ user.login }}
                             </div>
 
-            <!-- Очки -->
-                            <div class="col-4 text-success fw-bold">
+                            <div class="col-3 text-success fw-bold fs-5">
                                 {{ user.score }} <small class="text-muted" style="font-size: 0.7rem;">PTS</small>
                             </div>
                         </div>
                         {% endfor %}
                     </div>
-
-                    {% if not users %}
-                    <p class="text-center text-muted mt-3">Рейтинг пока пуст</p>
-                    {% endif %}
                 </div>
             </div>
 
